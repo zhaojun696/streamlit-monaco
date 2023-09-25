@@ -1,4 +1,4 @@
-from streamlit_monaco.core.render import render_component as _render_component
+from streamlit_monaco.render import render_component
 
 __version__ = "0.1.0"
 
@@ -8,7 +8,7 @@ def st_monaco(
     height="200px",
     language="markdown",
 ):
-    return _render_component(
+    return render_component(
         value=value,
         height=height,
         language=language,

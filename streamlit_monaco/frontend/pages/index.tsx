@@ -1,9 +1,12 @@
-import dynamic from "next/dynamic"
-import ElementsLoading from "../components/ElementsLoading"
+import dynamic from "next/dynamic";
 
-const ElementsApp = dynamic(
-  () => import("../components/ElementsApp"),
-  { loading: ElementsLoading, ssr: false }
-)
+const Loading = () => {
+  return <div>App is loading ...</div>;
+};
 
-export default ElementsApp
+const ElementsApp = dynamic(() => import("../components/Monaco"), {
+  loading: () => <Loading />,
+  ssr: false,
+});
+
+export default ElementsApp;
