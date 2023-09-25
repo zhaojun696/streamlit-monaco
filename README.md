@@ -1,10 +1,8 @@
-✨ Streamlit Elements &nbsp; [![GitHub][github_badge]][github_link] [![PyPI][pypi_badge]][pypi_link]
-=====================
+# ✨ Streamlit Monaco &nbsp; [![GitHub][github_badge]][github_link] [![PyPI][pypi_badge]][pypi_link]
 
 Create a draggable and resizable dashboard in Streamlit, featuring Material UI widgets, Monaco editor (Visual Studio Code), Nivo charts, and more!
 
-Demo
-----
+## Demo
 
 [![Open in Streamlit][share_badge]][share_link]
 
@@ -13,20 +11,16 @@ Demo
 [share_badge]: https://static.streamlit.io/badges/streamlit_badge_black_white.svg
 [share_link]: https://share.streamlit.io/okld/streamlit-gallery/main?p=elements
 [share_video]: https://github.com/okld/streamlit-elements/raw/main/demo.gif
-
 [github_badge]: https://badgen.net/badge/icon/GitHub?icon=github&color=black&label
 [github_link]: https://github.com/okld/streamlit-elements
-
 [pypi_badge]: https://badgen.net/pypi/v/streamlit-elements?icon=pypi&color=black&label
 [pypi_link]: https://pypi.org/project/streamlit-elements
 
-
-Getting started
----------------
+## Getting started
 
 ### 1. Introduction
 
-Streamlit Elements is a component that gives you the tools to compose beautiful applications with Material UI widgets, Monaco, Nivo charts, and more.
+Streamlit Monaco is a component that gives you the tools to compose beautiful applications with Material UI widgets, Monaco, Nivo charts, and more.
 It also includes a feature to create draggable and resizable dashboards.
 
 #### Installation
@@ -41,17 +35,17 @@ pip install streamlit-elements==0.1.*
 
 Here is a list of elements and objects you can import in your app:
 
-Element   | Description
-:--------:|:-----------
-elements  | Create a frame where elements will be displayed.
-dashboard | Build a draggable and resizable dashboard.
-mui       | Material UI (MUI) widgets and icons.
-html      | HTML objects.
-editor    | Monaco code and diff editor that powers Visual Studio Code.
-nivo      | Nivo chart library.
-media     | Media player.
-sync      | Callback to synchronize Streamlit's session state with elements events data.
-lazy      | Defer a callback call until another non-lazy callback is called.
+|  Element  | Description                                                                  |
+| :-------: | :--------------------------------------------------------------------------- |
+| elements  | Create a frame where elements will be displayed.                             |
+| dashboard | Build a draggable and resizable dashboard.                                   |
+|    mui    | Material UI (MUI) widgets and icons.                                         |
+|   html    | HTML objects.                                                                |
+|  editor   | Monaco code and diff editor that powers Visual Studio Code.                  |
+|   nivo    | Nivo chart library.                                                          |
+|   media   | Media player.                                                                |
+|   sync    | Callback to synchronize Streamlit's session state with elements events data. |
+|   lazy    | Defer a callback call until another non-lazy callback is called.             |
 
 #### Caution
 
@@ -67,11 +61,11 @@ lazy      | Defer a callback call until another non-lazy callback is called.
 ```python
 # First, import the elements you need
 
-from streamlit_elements import elements, mui, html
+from streamlit_monaco import elements, mui, html
 
-# Create a frame where Elements widgets will be displayed.
+# Create a frame where Monaco widgets will be displayed.
 #
-# Elements widgets will not render outside of this frame.
+# Monaco widgets will not render outside of this frame.
 # Native Streamlit widgets will not render inside this frame.
 #
 # elements() takes a key as parameter.
@@ -91,6 +85,7 @@ with elements("new_element"):
 
     mui.Typography("Hello world")
 ```
+
 - MUI Typography: https://mui.com/components/typography/
 
 ---
@@ -131,6 +126,7 @@ with elements("multiple_children"):
         mui.icon.DoubleArrow()
         mui.Typography("Button with multiple children")
 ```
+
 - MUI button: https://mui.com/components/buttons/
 - MUI icons: https://mui.com/components/material-icons/
 
@@ -155,6 +151,7 @@ with elements("nested_children"):
             html.p("Hello world")
             html.p("Goodbye world")
 ```
+
 - MUI paper: https://mui.com/components/paper/
 
 ---
@@ -192,6 +189,7 @@ with elements("properties"):
     # mui.collapse(in=True)
     # > Syntax error: 'in' is a Python keyword:
 ```
+
 - MUI text field: https://mui.com/components/text-fields/
 
 ---
@@ -228,6 +226,7 @@ with elements("style_mui_sx"):
         }
     )
 ```
+
 - MUI's **sx** property: https://mui.com/system/the-sx-prop/
 
 ##### 2.5.2. Other elements
@@ -258,6 +257,7 @@ with elements("style_elements_css"):
         }
     )
 ```
+
 - Emotion's **css** property: https://emotion.sh/docs/css-prop#object-styles
 
 ---
@@ -302,6 +302,7 @@ with elements("callbacks_retrieve_data"):
     # property of the text field.
     mui.TextField(label="Input some text here", onChange=handle_change)
 ```
+
 - MUI text field event: https://mui.com/components/text-fields/#uncontrolled-vs-controlled
 - MUI text field API: https://mui.com/api/text-field/
 
@@ -327,7 +328,7 @@ with elements("callbacks_sync"):
     # pass None to sync:
     # >>> sync(None, "second_parameter_to_keep")
 
-    from streamlit_elements import sync
+    from streamlit_monaco import sync
 
     if "my_event" not in st.session_state:
         st.session_state.my_event = None
@@ -355,7 +356,7 @@ with elements("callbacks_lazy"):
     # lazy(). This will defer the callback invocation until another non-lazy callback
     # is invoked. This can be useful to implement forms.
 
-    from streamlit_elements import lazy
+    from streamlit_monaco import lazy
 
     if "first_name" not in st.session_state:
         st.session_state.first_name = None
@@ -407,10 +408,10 @@ with elements("callbacks_hotkey"):
     # For more information regarding sequences syntax and supported keys,
     # go to Mousetrap's project page linked below.
     #
-    # /!\ Hotkeys work if you don't have focus on Streamlit Elements's frame /!\
+    # /!\ Hotkeys work if you don't have focus on Streamlit Monaco's frame /!\
     # /!\ As with other callbacks, this reruns the whole app /!\
 
-    from streamlit_elements import event
+    from streamlit_monaco import event
 
     def hotkey_pressed():
         print("Hotkey pressed")
@@ -425,6 +426,7 @@ with elements("callbacks_hotkey"):
     # set overrideDefault to True.
     event.Hotkey("ctrl+f", hotkey_pressed, overrideDefault=True)
 ```
+
 - Mousetrap: https://craig.is/killing/mice
 - Github page: https://github.com/ccampbell/mousetrap
 
@@ -453,9 +455,9 @@ with elements("callbacks_interval"):
 with elements("dashboard"):
 
     # You can create a draggable and resizable dashboard using
-    # any element available in Streamlit Elements.
+    # any element available in Streamlit Monaco.
 
-    from streamlit_elements import dashboard
+    from streamlit_monaco import dashboard
 
     # First, build a default layout for every element you want to include in your dashboard
 
@@ -487,8 +489,9 @@ with elements("dashboard"):
         mui.Paper("Second item (cannot drag)", key="second_item")
         mui.Paper("Third item (cannot resize)", key="third_item")
 ```
+
 - Dashboard item properties: https://github.com/react-grid-layout/react-grid-layout#grid-item-props
-- Dashboard grid properties (Streamlit Elements uses the Responsive grid layout):
+- Dashboard grid properties (Streamlit Monaco uses the Responsive grid layout):
   - https://github.com/react-grid-layout/react-grid-layout#grid-layout-props
   - https://github.com/react-grid-layout/react-grid-layout#responsive-grid-layout-props
 
@@ -501,13 +504,13 @@ with elements("dashboard"):
 ```python
 with elements("monaco_editors"):
 
-    # Streamlit Elements embeds Monaco code and diff editor that powers Visual Studio Code.
+    # Streamlit Monaco embeds Monaco code and diff editor that powers Visual Studio Code.
     # You can configure editor's behavior and features with the 'options' parameter.
     #
-    # Streamlit Elements uses an unofficial React implementation (GitHub links below for
+    # Streamlit Monaco uses an unofficial React implementation (GitHub links below for
     # documentation).
 
-    from streamlit_elements import editor
+    from streamlit_monaco import editor
 
     if "content" not in st.session_state:
         st.session_state.content = "Default value"
@@ -527,10 +530,11 @@ with elements("monaco_editors"):
 
     editor.MonacoDiff(
         original="Happy Streamlit-ing!",
-        modified="Happy Streamlit-in' with Elements!",
+        modified="Happy Streamlit-in' with Monaco!",
         height=300,
     )
 ```
+
 - Monaco examples and properties: https://github.com/suren-atoyan/monaco-react
 - Code editor options: https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html
 - Diff editor options: https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneDiffEditorConstructionOptions.html
@@ -543,9 +547,9 @@ with elements("monaco_editors"):
 ```python
 with elements("nivo_charts"):
 
-    # Streamlit Elements includes 45 dataviz components powered by Nivo.
+    # Streamlit Monaco includes 45 dataviz components powered by Nivo.
 
-    from streamlit_elements import nivo
+    from streamlit_monaco import nivo
 
     DATA = [
         { "taste": "fruity", "chardonay": 93, "carmenere": 61, "syrah": 114 },
@@ -601,6 +605,7 @@ with elements("nivo_charts"):
             }
         )
 ```
+
 - Nivo charts: https://nivo.rocks/
 - Github page: https://github.com/plouc/nivo
 
@@ -616,8 +621,9 @@ with elements("media_player"):
     #
     # This element is powered by ReactPlayer (GitHub link below).
 
-    from streamlit_elements import media
+    from streamlit_monaco import media
 
     media.Player(url="https://www.youtube.com/watch?v=iik25wqIuFo", controls=True)
 ```
+
 - ReactPlayer properties: https://github.com/cookpete/react-player#props
