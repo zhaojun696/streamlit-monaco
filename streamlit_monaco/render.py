@@ -1,8 +1,8 @@
 from pathlib import Path
 from streamlit.components.v1 import declare_component
-from streamlit_monaco import version
+import os
 
-if version.__release__:
+if os.environ.get("RELEASE_BUILD") == "true":
     ELEMENTS_FRONTEND = {
         "path": (Path(version.__file__).parent / "frontend/build").resolve()
     }
