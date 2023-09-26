@@ -3,7 +3,13 @@ import streamlit as st
 
 st.title("Streamlit Markdown Editor")
 
-content = st_monaco(value="# Hello world", height="600px", language="markdown")
+content = st_monaco(
+    value="# Hello world",
+    height="200px",
+    language="markdown",
+    lineNumbers=False,
+    minimap=False,
+)
 
-if st.button("Show editor's content"):
+if st.button("Get content"):
     st.write(content)

@@ -7,7 +7,7 @@ import {
 
 import Editor from "@monaco-editor/react";
 
-const Monaco = ({ args }: ComponentProps) => {
+const Monaco = ({ args, theme }: ComponentProps) => {
   const editorRef = useRef<typeof Editor | null>(null);
 
   let timeout: NodeJS.Timeout;
@@ -38,18 +38,37 @@ const Monaco = ({ args }: ComponentProps) => {
     else resizeObserver.disconnect();
   };
 
-  function handleEditorDidMount(editor: any) {
+  const handleEditorDidMount = (editor: any) => {
     editorRef.current = editor;
     updateStreamlit(args.value);
-  }
+  };
+
+  const handleEditorWillMount = (monaco: any) => {
+    monaco.editor.defineTheme("streamlit", {
+      base: "vs",
+      inherit: true,
+      rules: [],
+      colors: {
+        "editor.foreground": theme?.textColor,
+        "editor.background": theme?.backgroundColor,
+        "editorCursor.foreground": theme?.primaryColor,
+      },
+    });
+  };
 
   return (
     <div ref={observeElement} style={{ width: "100%", height: args.height }}>
       <Editor
+        theme={args.theme}
         value={args.value}
         language={args.language}
         onMount={handleEditorDidMount}
+        beforeMount={handleEditorWillMount}
         onChange={handleChange}
+        options={{
+          lineNumbers: args.lineNumbers ? "on" : "off",
+          minimap: { enabled: args.minimap },
+        }}
       />
     </div>
   );
