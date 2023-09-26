@@ -40,6 +40,7 @@ const Monaco = ({ args }: ComponentProps) => {
 
   function handleEditorDidMount(editor: any) {
     editorRef.current = editor;
+    updateStreamlit(args.value);
   }
 
   return (
