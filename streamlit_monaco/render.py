@@ -1,8 +1,8 @@
 from pathlib import Path
 from streamlit.components.v1 import declare_component
-import os
+from streamlit_monaco.flags import RELEASE
 
-if os.environ.get("RELEASE_BUILD") == "true":
+if RELEASE:
     ELEMENTS_FRONTEND = {"path": (Path(__file__).parent / "frontend/build").resolve()}
 else:
     ELEMENTS_FRONTEND = {"url": "http://localhost:3001"}

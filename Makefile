@@ -34,8 +34,7 @@ build-frontend:
 
 .PHONY: build-wheel
 build-wheel: 
-	export RELEASE_BUILD=true
-	python setup.py sdist bdist_wheel
+	RELEASE=true python setup.py sdist bdist_wheel
 
 .PHONY: upload
 upload:

@@ -1,1 +1,1 @@
-streamlit-monaco
+streamlit-monaco==0.1.3

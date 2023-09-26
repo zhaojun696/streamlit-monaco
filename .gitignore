@@ -1,3 +1,5 @@
+streamlit_monaco/flags.py
+
 # Streamlit
 .streamlit/*
 !.streamlit/config.toml
